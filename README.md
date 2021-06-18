@@ -1,10 +1,9 @@
-# PyTorch Flask API
+# PyTorch Flask MultiTag Vacation Set Classifier
 
 
-Check the demo [here](https://pytorch-imagenet.herokuapp.com/).
+Check the demo [here](https://multitagflask.herokuapp.com/).
 
-If you'd like to check a super simple API server, then check [this repo](https://github.com/avinassh/pytorch-flask-api).
-
+Summer project intented to classify and tag a dataset of tens of thousands of vacation photos taken by my family members over a number of years. The model uses resnet50 as a base and via transfer learning utilizes a hand labeled dataset of about 1500 vacation photos to be better biased towards the input dataset. I used a skeleton code for multitag pytorch training from [here](https://debuggercafe.com/multi-label-image-classification-with-pytorch-and-deep-learning/) as well as a flask-heroku skeleton code from [here](https://github.com/avinassh/pytorch-flask-api-heroku) and modified it to suit my needs. I am still tuning the model's accuracy so further commits updating 'model.pth' will occur on a regular basis.
 
 ## Requirements
 
@@ -22,7 +21,7 @@ Run the server:
 
 ## Heroku Deployment
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/avinassh/pytorch-flask-api-heroku)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/terencelee-uni/multitag-heroku)
 
 
 ## License
