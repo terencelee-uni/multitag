@@ -1,6 +1,6 @@
 import io
 import json
-import app.models
+import models
 import numpy as np
 from torch.utils.data import DataLoader
 import torch
