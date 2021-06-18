@@ -21,7 +21,7 @@ Run the server:
 
 ## Heroku Deployment
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/terencelee-uni/multitag-heroku)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/terencelee-uni/multitag)
 
 
 ## License
