@@ -39,13 +39,13 @@ class ImageDataset(Dataset):
         #     ])
         # # set the test data images and labels, only last 10 images
         # # this, we will use in a separate inference script
-        # elif self.test == True and self.train == False:
-        self.image_names = list(self.all_image_names[:])
-        self.labels = list(self.all_labels[:])         # define the test transforms
-        self.transform = transforms.Compose([
-            transforms.ToPILImage(),
-            transforms.ToTensor(),
-            ])
+        if self.test == True and self.train == False:
+            self.image_names = list(self.all_image_names[:])
+            self.labels = list(self.all_labels[:])         # define the test transforms
+            self.transform = transforms.Compose([
+                transforms.ToPILImage(),
+                transforms.ToTensor(),
+                ])
     def __len__(self):
         return len(self.image_names)
 
@@ -61,3 +61,4 @@ class ImageDataset(Dataset):
             'image': torch.tensor(image, dtype=torch.float32),
             'label': torch.tensor(targets, dtype=torch.float32)
         }
+
