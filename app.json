@@ -1,0 +1,6 @@
+{
+  "name": "PyTorch Flask Multitag Classifier v2",
+  "description": "Image Classifier built using PyTorch",
+  "repository": "https://github.com/terencelee-uni/multitag",
+  "keywords": ["python", "flask", "pytorch", "heroku"]
+}
