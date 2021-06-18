@@ -1,6 +1,6 @@
 import io
 import json
-import app.models
+import models
 import numpy as np
 from torch.utils.data import DataLoader
 import torch
@@ -11,7 +11,7 @@ import os
 
 from flask import Flask, render_template, request, redirect, jsonify
 
-from functions import transform_image, get_prediction, allowed
+from functions import transform_image, get_prediction
 
 # ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
@@ -28,7 +28,6 @@ def upload_file():
             return
         img_bytes = file.read()
         class_name = get_prediction(image_bytes=img_bytes)
-        class_name = format_class_name(class_name)
         return render_template('result.html',
                                class_name=class_name)
     return render_template('index.html')

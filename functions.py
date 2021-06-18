@@ -20,12 +20,12 @@ def transform_image(image_bytes):
     return my_transforms(image).unsqueeze(0)
 
 
-device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+device = torch.device("cpu")
 # device = torch.device("cpu")
 #intialize the model
 model = models.model(pretrained=False, requires_grad=False).to(device)
 # load the model checkpoint
-checkpoint = torch.load('./model.pth')
+checkpoint = torch.load('./model.pth', map_location=torch.device('cpu'))
 # load model weights state_dict
 model.load_state_dict(checkpoint['model_state_dict'])
 model.eval()
@@ -34,7 +34,7 @@ def get_prediction(image_bytes):
     train_csv = pd.read_csv('./trainNew.csv')
     tags = train_csv.columns.values[2:]
     tensor = transform_image(image_bytes=image_bytes)
-    outputs = model(tensor.cuda())
+    outputs = model(tensor)
     outputs = torch.sigmoid(outputs)
     outputs = outputs.detach().cpu()
     sorted_indices = np.argsort(outputs[0])
