@@ -1,4 +1,4 @@
-# PyTorch Flask MultiTag Vacation Set Classifier
+# PyTorch Flask MultiTag Vacation Dataset Classifier
 
 
 Check the demo hosted on heroku [here](https://multitagflask.herokuapp.com/).
