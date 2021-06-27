@@ -59,6 +59,6 @@ class ImageDataset(Dataset):
 
         return {
             'image': torch.tensor(image, dtype=torch.float32),
-            'label': torch.tensor(targets, dtype=torch.float32)
+            'label': torch.tensor(targets, dtype=torch.float32),
+            'name' : self.image_names[index] + ".jpg"
         }
-
