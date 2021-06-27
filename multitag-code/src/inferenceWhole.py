@@ -5,7 +5,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from dataset2 import ImageDataset
 from torch.utils.data import DataLoader
-import json
+import requests, json, os
+from elasticsearch import Elasticsearch
 with torch.no_grad():
 # initialize the computation device
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -31,6 +32,7 @@ with torch.no_grad():
     )
 
     predList = []
+    imageNames = []
     for counter, data in enumerate(test_loader):
         image, target = data['image'].to(device), data['label']
         # get all the index positions where value == 1
@@ -60,6 +62,20 @@ with torch.no_grad():
         # plt.savefig(f"../outputs/inference_{counter}.jpg")
         # plt.show()
         # predList.append(preds)
-    jsonStr = json.dumps(predList)
+    for image, label, name in enumerate(test_data): # Exporting json file for elastic search
+        imageNames.append(name)
+    outDict = {}
+    for i in imageNames:
+        outDict[imageNames[i]] = predList[i]
     with open('data.json', 'w', encoding='utf-8') as f:
-        json.dump(jsonStr, f, ensure_ascii=False, indent=4)
+        json.dump(outDict, fp, ensure_ascii=False, indent=4)
+    # Send json to elastic search
+    res = requests.get('http://localhost:9200')
+    print (res.content)
+    es = Elasticsearch([{'host': 'localhost', 'port': '9200'}])
+
+    f = open('data.json')
+    docket_content = f.read()
+    # Send the data into es
+    es.index(index='myindex', ignore=400, doc_type='docket', 
+    id=i, body=json.loads(docket_content))
