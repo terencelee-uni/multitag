@@ -28,8 +28,10 @@ def upload_file():
             return
         img_bytes = file.read()
         class_name = get_prediction(image_bytes=img_bytes)
+        class_id = ["Attributes", "Scenery", "Person", "Mountain", "Lake", "Fountain", "Trees", "Sky", "Tram", "Sunset", "Street", "Building", "Market", "Church", "Garden", "Museum", "Restaurant", "Paintings", "Beach", "Shop", "Flowers", "Hotel", "Castle", "Animal", "Food", "Sculpture", "Rocks", "Monument", "Signs", "Nighttime"]
         return render_template('result.html',
-                               class_name=class_name)
+                               class_name=class_name,
+                               class_id=class_id)
     return render_template('index.html')
 
 
