@@ -1,4 +1,5 @@
 # PyTorch Flask MultiTag Vacation Dataset Classifier
+Read the [Blog](https://www.eqoptech.org/publications/2022/3/21/pytorchflask-multitag-photo-dataset-classifier) about this project.
 
 Check the demo hosted on heroku [here](https://multitagflask.herokuapp.com/) (it may be a bit slow to load since it is free-tier)
 
